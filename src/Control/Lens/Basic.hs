@@ -1,4 +1,5 @@
 {-# LANGUAGE RankNTypes #-}
+{-# LANGUAGE TemplateHaskell #-}
 
 -- | Basic lens type and functions.
 --
@@ -15,6 +16,7 @@ module Control.Lens.Basic
   where
 
 import Control.Applicative
+import Language.Haskell.TH
 
 -- |
 --
@@ -86,3 +88,15 @@ over l f = runId . l (Id . f)
 -- and @t@.
 set :: Lens s t a b -> b -> s -> t
 set l a = runId . l (Id . const a)
+
+-- | Make a lens from a field name.
+--
+-- Example: @over $(field 'foo) (*2)@
+field :: Name -> Q Exp
+field name = do
+  [|\f r ->
+      fmap
+        $(lamE
+            [varP (mkName "a")]
+            (recUpdE (varE (mkName "r")) [return (name, VarE (mkName "a"))]))
+        (f ($(varE name) r))|]

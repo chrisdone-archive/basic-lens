@@ -1,5 +1,5 @@
 name:                basic-lens
-version:             0.0.0
+version:             0.0.1
 synopsis:            Basic lens type and functions
 description:         Necessary type and functions for basic lens work.
                      .
@@ -20,4 +20,4 @@ library
   hs-source-dirs:    src/
   ghc-options:       -Wall -O2
   exposed-modules:   Control.Lens.Basic
-  build-depends:     base >= 4 && <5
+  build-depends:     base >= 4 && <5, template-haskell
