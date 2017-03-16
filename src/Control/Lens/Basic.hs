@@ -12,7 +12,8 @@ module Control.Lens.Basic
    -- * Functions
   ,view
   ,set
-  ,over)
+  ,over
+  ,field)
   where
 
 import Control.Applicative

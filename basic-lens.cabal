@@ -1,5 +1,5 @@
 name:                basic-lens
-version:             0.0.1
+version:             0.0.2
 synopsis:            Basic lens type and functions
 description:         Necessary type and functions for basic lens work.
                      .
