@@ -42,14 +42,11 @@ import Language.Haskell.TH
 -- __Example__
 --
 -- @
--- λ> data Person = Person Char Int deriving Show
--- λ> let _age f (Person x a) = fmap (\\b -> Person x b) (f a)
--- λ> view _age (Person 'a' 10)
--- 10
--- λ> over _age (+1) (Person 'a' 10)
--- Person 'a' 11
--- λ> set _age 100 (Person 'a' 10)
--- Person 'a' 100
+-- λ> data Person = Person { personChar :: Char, personAge :: Int } deriving Show
+-- λ> view $(field 'personChar) (Person 'a' 10)
+-- 'a'
+-- λ> over $(field 'personAge) (*2) (Person 'a' 10)
+-- Person {personChar = 'a', personAge = 20}
 -- λ>
 -- @
 --
