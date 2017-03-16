@@ -3,9 +3,9 @@ basic-lens
 
 Necessary type and functions for basic lens work.
 
-Handy to depend on for libraries and general light-weight use,
-including PITA environments, old GHCs and non-GHC implementations with
-Rank-N type support. Depends only on base.
+Handy to depend on for libraries and general light-weight use, for
+people happy with regular Haskell who *sometimes* want to do composable/first-class
+update, but mostly don't need it.
 
 Provides only:
 
@@ -14,6 +14,7 @@ type Lens s t a b
 view :: Lens s t a b -> s -> a
 set :: Lens s t a b -> b -> s -> t
 over :: Lens s t a b -> (a -> b) -> s -> t
+field :: Name -> Q Exp
 ```
 
 Example:
